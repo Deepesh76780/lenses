@@ -6,7 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 // 1. Import the extendTheme function
 import { extendTheme, ChakraProvider } from "@chakra-ui/react";
-
+import ChatProvider from "./context/ChatProvider";
 // 2. Extend the theme to include custom colors, fonts, etc
 const colors = {
   brand: {
@@ -21,11 +21,13 @@ const theme = extendTheme({ colors });
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <ChakraProvider theme={theme}>
-        <App />
-      </ChakraProvider>
-    </BrowserRouter>
+    <ChatProvider>
+      <BrowserRouter>
+        <ChakraProvider theme={theme}>
+          <App />
+        </ChakraProvider>
+      </BrowserRouter>
+    </ChatProvider>
   </React.StrictMode>
 );
 

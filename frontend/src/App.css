@@ -3,12 +3,10 @@
 .App {
   min-height: 100vh;
   display: flex;
-  background-color: rgb(37, 34, 34);
+  background-color: rgba(246, 232, 232, 0.959);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  color: aliceblue;
-  padding: 2px;
 }
 
 ::-webkit-scrollbar {

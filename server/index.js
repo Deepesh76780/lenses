@@ -1,22 +1,23 @@
 const express = require("express");
 const app = express();
-const moongose = require("moongoose");
 require("dotenv").config();
 const { chats } = require("./data/data");
+const { connect } = require("./config/db");
+const userRoutes = require("./routes/userRoutes");
+const chatRoutes = require("./routes/chatRoutes");
+const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 
+connect();
+app.use(express.json()); //to except json data
 app.get("/", (req, res) => {
   res.send("hello world");
 });
 
-app.get("/api/chat", (req, res) => {
-  res.send(chats);
-});
+app.use("/api/user", userRoutes);
+app.use("/api/chat", chatRoutes);
 
-app.get("/api/chat/:id", (req, res) => {
-  const id = req.params.id;
-  const singleChat = chats.find((c) => c._id === id);
-  res.send(singleChat);
-});
+app.use(notFound);
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 3000;
 
