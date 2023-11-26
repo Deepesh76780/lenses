@@ -17,7 +17,7 @@ import io from "socket.io-client";
 import Lottie from "react-lottie";
 import animationData from "../animation/is-Typing.json";
 
-const ENDPOINT = "http://localhost:5000";
+const ENDPOINT = "https://lense-chat.onrender.com/";
 var socket, selectedChatCompare;
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
   const [messages, setMessages] = useState([]);
