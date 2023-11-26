@@ -1,21 +1,27 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { Redirect } from "react-router-dom";
+// import { useNavigate } from "react-router";
 const chatContext = createContext(null);
 
 const ChatProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [selectedChat, setSelectedChat] = useState(null);
+  const [chats, setChats] = useState([]);
+  // const navigate = useNavigate();
 
   useEffect(() => {
     const data = localStorage.getItem("userInfo");
     if (data) {
       setUser(JSON.parse(data));
     } else {
-      <Redirect to="/" />;
+      // navigate("/");
+      console.log("no user");
     }
   }, []);
 
   return (
-    <chatContext.Provider value={{ user, setUser }}>
+    <chatContext.Provider
+      value={{ user, setUser, setSelectedChat, selectedChat, chats, setChats }}
+    >
       {children}
     </chatContext.Provider>
   );

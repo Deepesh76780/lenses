@@ -14,6 +14,7 @@ import {
 import { useDisclosure } from "@chakra-ui/hooks";
 import { Button } from "@chakra-ui/react";
 import { ViewIcon } from "@chakra-ui/icons";
+import { Text } from "@chakra-ui/react";
 
 const ProfileModel = ({ user, children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -23,18 +24,24 @@ const ProfileModel = ({ user, children }) => {
         <span onClick={onOpen}>{children}</span>
       ) : (
         <IconButton
-          color={"black"}
-          d={{ base: "flex" }}
+          display={{ base: "flex" }}
           Icon={<ViewIcon />}
           onClick={onOpen}
         />
       )}
-      <Modal isOpen={isOpen} onClose={onClose}>
+      <Modal size={"lg"} isOpen={isOpen} onClose={onClose} isCentered>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>{user.name}</ModalHeader>
+          <ModalHeader display="flex" justifyContent={"center"}>
+            {user.name}
+          </ModalHeader>
           <ModalCloseButton />
-          <ModalBody>
+          <ModalBody
+            display={"flex"}
+            flexDir={"column"}
+            alignItems={"center"}
+            justifyContent={"space-between"}
+          >
             <Image
               src={user.pic}
               alt="user pic"
@@ -43,6 +50,9 @@ const ProfileModel = ({ user, children }) => {
             />
           </ModalBody>
 
+          <Text fontSize="xl" fontFamily="work sans" textAlign="center">
+            {user.email}
+          </Text>
           <ModalFooter>
             <Button colorScheme="blue" mr={3} onClick={onClose}>
               Close
