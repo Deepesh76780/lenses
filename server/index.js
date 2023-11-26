@@ -12,6 +12,10 @@ const path = require("path");
 connect();
 app.use(express.json()); //to except json data
 // deployment
+// deployment
+app.use("/api/message", messageRoutes);
+app.use("/api/user", userRoutes);
+app.use("/api/chat", chatRoutes);
 
 const __dirname1 = path.resolve();
 
@@ -25,11 +29,6 @@ if (process.env.NODE_ENV === "production") {
     console.log("API running successfully");
   });
 }
-
-// deployment
-app.use("/api/message", messageRoutes);
-app.use("/api/user", userRoutes);
-app.use("/api/chat", chatRoutes);
 
 app.use(notFound);
 app.use(errorHandler);

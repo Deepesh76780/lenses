@@ -25,7 +25,6 @@ import { useToast } from "@chakra-ui/react";
 import ChatLoading from "../ChatLoading";
 import axios from "axios";
 import UserListItems from "../UserListItems";
-import useNavigate from "react-router-dom";
 import { getSender } from "../../config/ChatLogics";
 import NotificationBadge, { Effect } from "react-notification-badge";
 

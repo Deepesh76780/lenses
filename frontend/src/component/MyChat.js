@@ -25,6 +25,7 @@ const MyChat = ({ fetchAgain }) => {
       };
 
       const { data } = await axios.get("/api/chat", config);
+      // console.log(data);
       setChats(data);
     } catch (error) {
       toast({
@@ -87,7 +88,8 @@ const MyChat = ({ fetchAgain }) => {
         borderRadius="lg"
         overflowY="hidden"
       >
-        {chats ? (
+        {console.log(chats)}
+        {chats.length > 0 ? (
           <Stack overflowY="scroll">
             {chats.map((chat) => (
               <Box
