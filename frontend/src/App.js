@@ -1,13 +1,23 @@
 import "./App.css";
-import { Route } from "react-router-dom";
 import Homepage from "./pages/homepage";
 import Chatpage from "./pages/chatpage";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Homepage />,
+  },
+  {
+    path: "/chats",
+    element: <Chatpage />,
+  },
+]);
 
 function App() {
   return (
     <div className="App">
-      <Route path="/" component={Homepage} exact />
-      <Route path="/chats" component={Chatpage} />
+      <RouterProvider router={router} />
     </div>
   );
 }

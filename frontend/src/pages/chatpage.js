@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import MyChat from "../component/MyChat";
 import SideDrawer from "../component/misellaneous/SideDrawer";
 import { ChatState } from "../context/ChatProvider";
@@ -9,7 +8,6 @@ import { Box } from "@chakra-ui/react";
 const Chatpage = () => {
   const { user } = ChatState();
   const [fetchAgain, setFetchAgain] = React.useState(false);
-  // console.log(user);
 
   return (
     <div style={{ width: "100%" }}>

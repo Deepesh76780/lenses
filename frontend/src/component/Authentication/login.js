@@ -6,6 +6,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useToast } from "@chakra-ui/react";
 import { ChatState } from "../../context/ChatProvider";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [show, setShow] = useState(false);
@@ -15,6 +16,7 @@ const Login = () => {
   const [password, setPassword] = useState();
   const [loading, setLoading] = useState(false);
   const { setUser } = ChatState();
+  const navigate = useNavigate();
 
   const submitHandler = async () => {
     setLoading(true);
@@ -64,6 +66,8 @@ const Login = () => {
       });
       setLoading(false);
     }
+
+    navigate("/chats");
   };
 
   return (

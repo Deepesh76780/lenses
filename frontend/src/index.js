@@ -3,11 +3,9 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter } from "react-router-dom";
-// 1. Import the extendTheme function
 import { extendTheme, ChakraProvider } from "@chakra-ui/react";
 import ChatProvider from "./context/ChatProvider";
-// 2. Extend the theme to include custom colors, fonts, etc
+
 const colors = {
   brand: {
     900: "#1a365d",
@@ -22,11 +20,9 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <ChatProvider>
-      <BrowserRouter>
-        <ChakraProvider theme={theme}>
-          <App />
-        </ChakraProvider>
-      </BrowserRouter>
+      <ChakraProvider theme={theme}>
+        <App />
+      </ChakraProvider>
     </ChatProvider>
   </React.StrictMode>
 );

@@ -27,6 +27,7 @@ import axios from "axios";
 import UserListItems from "../UserListItems";
 import { getSender } from "../../config/ChatLogics";
 import NotificationBadge, { Effect } from "react-notification-badge";
+import { useNavigate } from "react-router-dom";
 
 const SideDrawer = () => {
   const [search, setSearch] = useState("");
@@ -34,19 +35,13 @@ const SideDrawer = () => {
   const [searchResults, setSearchResult] = useState([]);
   const [loading, setLoading] = useState(false);
   const [loadingChat, setLoadingChat] = useState(false);
-  const {
-    user,
-    setSelectedChat,
-    chats,
-    setChats,
-    notification,
-    setNotification,
-  } = ChatState();
+  const navigate = useNavigate();
+
+  const { user, setSelectedChat, notification, setNotification } = ChatState();
   const toast = useToast();
   const logoutHandler = () => {
     localStorage.removeItem("userInfo");
-    // window.location.reload();
-    // redirect to / here
+    navigate("/");
   };
 
   const accessChat = async (userId) => {
