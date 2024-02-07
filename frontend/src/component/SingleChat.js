@@ -88,11 +88,9 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     selectedChatCompare = selectedChat;
   }, [selectedChat]);
 
-  console.log(notification);
 
   useEffect(() => {
     socket.on("messageReceived", (newMessage) => {
-      console.log(newMessage);
       if (
         !selectedChatCompare ||
         selectedChatCompare._id !== newMessage.chat._id
@@ -124,7 +122,6 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         };
         setNewMessages("");
         const { data } = await axios.post(`/api/message/`, body, config);
-        console.log(data);
         socket.emit("newMessage", data);
         setMessages([...messages, data]);
       } catch (error) {
